@@ -9,7 +9,7 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Username</th>
             <th>License</th>
         </tr>
     </thead>
@@ -19,7 +19,7 @@
             <td>{{ driver.id }}</td>
             <td>
                 <a href="{% url 'taxi:driver-detail' driver.id %}">
-                    {{ driver.first_name }} {{ driver.last_name }}
+                    {{ driver.username }}
                 </a>
             </td>
             <td>{{ driver.license_number }}</td>

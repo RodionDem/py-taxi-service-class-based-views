@@ -1,11 +1,6 @@
-<div class="list-group">
-    <a href="{% url 'taxi:manufacturer-list' %}" class="list-group-item list-group-item-action">
-        Manufacturers
-    </a>
-    <a href="{% url 'taxi:car-list' %}" class="list-group-item list-group-item-action">
-        Cars
-    </a>
-    <a href="{% url 'taxi:driver-list' %}" class="list-group-item list-group-item-action">
-        Drivers
-    </a>
-</div>
+<ul class="list-group">
+    <li><a href="{% url 'taxi:index' %}" class="list-group-item list-group-item-action">Головна</a></li>
+    <li><a href="{% url 'taxi:manufacturer-list' %}" class="list-group-item list-group-item-action">Автомобільні виробники</a></li>
+    <li><a href="{% url 'taxi:car-list' %}" class="list-group-item list-group-item-action">Автомобілі</a></li>
+    <li><a href="{% url 'taxi:driver-list' %}" class="list-group-item list-group-item-action">Водії</a></li>
+</ul>

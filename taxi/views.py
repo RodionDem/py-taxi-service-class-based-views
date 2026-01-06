@@ -1,4 +1,3 @@
-from django.db.models import Prefetch
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Driver, Car, Manufacturer
@@ -35,34 +34,19 @@ class CarDetailView(DetailView):
     model = Car
     context_object_name = "car"
 
-    def get_queryset(self):
-        return Car.objects.select_related("manufacturer")
-
 
 class DriverListView(ListView):
     model = Driver
     template_name = "taxi/driver_list.html"
     context_object_name = "driver_list"
     paginate_by = 5
-
-    def get_queryset(self):
-        return Driver.objects.prefetch_related(
-            Prefetch(
-                "cars",
-                queryset=Car.objects.select_related("manufacturer")
-            )
-        )
+    queryset = Driver.objects.all().order_by("username")
 
 
 class DriverDetailView(DetailView):
     model = Driver
     template_name = "taxi/driver_detail.html"
     context_object_name = "driver"
-
-    def get_queryset(self):
-        return Driver.objects.prefetch_related(
-            Prefetch(
-                "cars",
-                queryset=Car.objects.select_related("manufacturer")
-            )
-        )
+    queryset = Driver.objects.prefetch_related(
+        "cars"
+    )
